@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="ui.bootstrap.demo">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bootstrap progres bar</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+     <script src="ui-bootstrap-tpls-0.12.0.js"></script>
+    <!--<script src="example.js"></script>-->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
+        angular.module('ui.bootstrap.demo').controller('ProgressDemoCtrl', function ($scope) {
+            $scope.max = 100;
+
+            $scope.random = function() {
+                var value = Math.floor((Math.random() * 100) + 1);
+                var type;
+
+                if (value < 25) {
+                    type = 'success';
+                } else if (value < 50) {
+                    type = 'info';
+                } else if (value < 75) {
+                    type = 'warning';
+                } else {
+                    type = 'danger';
+                }
+
+                $scope.showWarning = (type === 'danger' || type === 'warning');
+
+                $scope.dynamic = value;
+                $scope.type = type;
+            };
+            $scope.random();
+
+            $scope.randomStacked = function() {
+                $scope.stacked = [];
+                var types = ['success', 'info', 'warning', 'danger'];
+
+                /*n=Math.floor((Math.random() * 4) + 1)*/
+                for (var i = 0, n = 100; i < n; i++) {
+                    var index = i; /*Math.floor((Math.random() * 4))And value:Math.floor((Math.random() * 30) + 1)*/
+                    $scope.stacked.push({
+                        value: (i+1),
+                        type: types[index]
+                    });
+                }
+            };
+            $scope.randomStacked();
+        });
+    </script>
+
+</head>
+<body ng-controller="ProgressDemoCtrl">
+
+<h3>Dynamic <button class="btn btn-sm btn-primary" type="button" ng-click="random()">Randomize</button></h3>
+<h1>First</h1>
+<progressbar max="max" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}} / {{max}}</span></progressbar>
+
+<h1>Second</h1>
+<small><em>Object (changes type based on value)</em></small>
+<!--Inside progress bar umder type case-->
+<progressbar max="max" class="progress-striped active" value="dynamic" type="{{type}}">{{type}} ">{{dynamic}}</i></progressbar>
+</body>
+</html>

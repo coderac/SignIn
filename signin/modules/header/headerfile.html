@@ -1,0 +1,121 @@
+<!--<div class="container">-->
+<script type="text/javascript" src="lib/bootstrap/jq/lightbox_launch.js"></script>
+<script type="text/javascript" src="modules/authentication/controllers.js"></script>
+<script type="text/javascript" src="modules/authentication/services.js"></script>
+
+<header class="navbar-inverse" role="banner">
+          <nav role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+             <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Home</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <!--<li class="active">--><li><a href="#">Custom Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Unused Link</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Get in <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a id="try-1" class="try sprited" href="#"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+    </header>
+
+<!--
+</div>-->
+
+<div ng-app>
+
+    <div id="sign_up">
+        <form name="form" ng-submit="login()" role="form">
+            <div ng-show="error" class="alert alert-danger">{{error}}</div>
+            <h3 id="see_id" class="sprited">Can I see some ID?</h3>
+            <span>Please sign in using the form below</span>
+            <div id="sign_up_form">
+                <div class="form-group">
+                    <label>
+                        <strong>Username:</strong>
+                        <i class="fa fa-key"></i>
+                        <input type="text" name="username" class="sprited form-control" ng-mode="username" required/>
+                        <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+                    </label>
+                    <div class="form-group">
+                        <label>
+                            <strong>Password:</strong>
+                            <input type="password" name="password" class="sprited form-control" id="password" ng-model="password" required/>
+                            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block" >Password is required</span>
+                        </label>
+                    </div>
+                    <div id="actions">
+                        <!--<button type="submit" id="cancel" class="btn">Cancel</button>-->
+                        <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Login</button>
+                        <!--<a id="cancel" class="close form_button sprited" href="#">Cancel</a>-->
+                        <!--<a id="log_in" ng-disabled="form.$invalid || dataLoading" class="form_button sprited" href="#">Sign in</a>-->
+                        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+
+                    </div>
+                </div>
+            </div>
+            <h3 id="left_out" class="sprited">Feeling left out?</h3>
+        <span>
+        Don't be sad, just
+        <a href="#">click here</a>
+        to sign up!
+        </span>
+            <a id="close_x" class="close sprited" href="#">close</a>
+        </form>
+
+    </div>
+</div>
+
+
+        <!--    <script charset="utf-8" type="text/javascript">
+                $(function() {
+                    function launch() {
+                        $('#sign_up').lightbox_me({centered: true, onLoad: function() { $('#sign_up').find('input:first').focus()}});
+                    }
+                    $('#try-1').click(function(e) {
+                        $("#sign_up").lightbox_me({centered: true, preventScroll: true, onLoad: function() {
+                            $("#sign_up").find("input:first").focus();
+                        }});
+                        e.preventDefault();
+                    });
+                    $('table tr:nth-child(even)').addClass('stripe');
+                });
+            </script>-->
