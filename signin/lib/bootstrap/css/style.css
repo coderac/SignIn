@@ -11,6 +11,7 @@
 header{
     position: fixed;
     width: 100%;
+    z-index: 10;
 }
 body {
     background: #eef2f7;
@@ -328,4 +329,28 @@ body, html, main {
 .cd-scrolling-bg {
     min-height: 100%;
 }
-No newline at end of file
+
+
+
+.onpage{
+    background-color: lightgrey;
+    width: 300px;
+    padding: 25px;
+    border: 25px solid #3A7639;
+    margin: 25px;
+    font-size:14px;
+    text-decoration: sans-serif solid;
+    color: #490C2C;
+    position:fixed;
+    margin-top:6%;
+    margin-left: 3%;
+    margin-right: 40%;
+    z-index: 10;
+
+
+}
+.onpage:hover{
+    border: 25px solid darkred;
+    font:Arial sans-serif solid green;
+    z-index: 20;
+}

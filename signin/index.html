@@ -3,23 +3,73 @@
 <head>
     <meta charset="utf-8" />
     <title>Based on Angular Js</title>
-
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">-->
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
-
     <!--Custom CSS Stylesheet for this page-->
     <link media="screen" type="text/css" href="lib/bootstrap/css/style.css" rel="stylesheet">
     <script type="text/javascript" src="lib/bootstrap/jq/progressbar_bootstrap.js"></script>
+    <!--Custom css file to welcome-->
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/main.css">
+    <script type="text/javascript" src="lib/bootstrap/js/insight.js"></script>
+    <!--Background css-->
+    <link media="screen" type="text/css" href="lib/bootstrap/css/styleback.css" rel="stylesheet">
 
 
 
 </head>
 <body>
+<div class="bg-grad">
+    <div class="clouds">
+        <div class="cloud x1"></div>
+    </div>
 
+    <div class="bg-layer color-1"></div>
+    <div class="bg-layer color-2"></div>
+    <div class="bg-layer color-3 on"></div>
+    <div class="bg-layer color-4"></div>
+</div>
 <div class="jumbotron" style="padding: 0px 0px;">
+<div class="container" style="width: 100%; padding-left:0px;">
+    <div  class="bodyhtml">
+         <div ng-view>
+            <section class="no-user-select" id="landing">
+
+                <div class="background">
+                    <div id="landing-progress" class="landing-progress">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M 50,50 m 0,-49.25 a 49.25,49.25 0 1 1 0,98.5 a 49.25,49.25 0 1 1 0,-98.5" stroke="#FCB03C"
+                                  stroke-width="1.5" fill="#FFF9F0"
+                                  style="stroke-dasharray: 309.49, 309.49; stroke-dashoffset: 0;"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <headerc>Welcome To</headerc>
+                    <h3>Hisaab se laga lo Dukaan</h3>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</div>
+
+<h1>Checking External value</h1>
+<!--
+<div class="jumbotron" style="padding: 0px 0px;">
+    <div class="container" style="width: 1407px; padding-left:0px;">
+        <div>
+            <link rel="stylesheet" href="lib/bootstrap/css/main.css">
+            <div ng-view>
+                <ng-include src=" 'pages/welcome.html' "></ng-include>
+            </div>
+        </div>
+     </div>
+</div>
+-->
+<!--<div class="jumbotron" style="padding: 0px 0px;">
     <div class="container" style="width: 1407px; padding-left:0px;">
         <div>
             <link media="screen" type="text/css" href="lib/bootstrap/css/custom.css" rel="stylesheet">
@@ -28,31 +78,16 @@
             </div>
         </div>
     </div>
+</div>-->
+<div class="onpage">
+    <div ng-include src="'pages/content.html'"></div>
 </div>
-
-<div class="cd-fixed-bg cd-bg-1">
-    <h1><!-- title goes here --></h1>
-</div>
-<div class="cd-fixed-bg cd-bg-2">
-    <div class="cd-container">
-    </div>
-</div>
+<!--<div class="cd-fixed-bg cd-bg-1"></div>
+<div class="cd-fixed-bg cd-bg-2"></div>-->
 <!--<ng-include src =" 'modules/header/headerfile.html' "></ng-include>-->
 
 
 
-
-
-
-<div class="credits text-center">
-
-    <p>
-        <a href="www.google.com">Angular Js Program</a>
-    </p>
-    <p>
-        <a href="www.google.com">Rahul Mishra</a>
-    </p>
-</div>
 
 <script type="text/javascript" src="lib/bootstrap/jq/jquery-2.0.3.min.js"></script>
 
